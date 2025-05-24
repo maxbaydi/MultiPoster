@@ -3,6 +3,7 @@ from api.vsegpt_client import VseGPTClient
 from api.wordpress_client import WordPressClient
 from api.telegram_client import TelegramClient
 from config.env_manager import EnvManager
+from config.settings_manager import SettingsManager
 import os
 import re
 import json
@@ -11,10 +12,14 @@ import time
 class NewPostPage(QWidget):
     def __init__(self):
         super().__init__()
-        self.env = EnvManager()
-        self.gpt = VseGPTClient(self.env.get('VSEGPT_API_KEY'), self.env.get('VSEGPT_URL'))
-        self.wp = WordPressClient(self.env.get('WP_URL'), self.env.get('WP_USERNAME'), self.env.get('WP_APP_PASSWORD'))
-        self.tg = TelegramClient(self.env.get('TELEGRAM_BOT_TOKEN'), self.env.get('TELEGRAM_CHANNEL_ID'))
+        self.settings = SettingsManager()
+        vsegpt = self.settings.get_vsegpt()
+        self.gpt = VseGPTClient(vsegpt.get('api_key'), vsegpt.get('url'))
+        self.wp_sites = self.settings.get_wordpress_sites()
+        self.tg_bots = self.settings.get_telegram_bots()
+        self.wp_clients = [WordPressClient(site['url'], site['username'], site['app_password']) for site in self.wp_sites]
+        self.wp_categories = [site.get('category_id') for site in self.wp_sites]
+        self.tg_clients = [TelegramClient(bot['token'], bot['channel_id']) for bot in self.tg_bots]
         self.image_paths = []
         self.mass_images_root = None
         self.categories = []
@@ -36,11 +41,11 @@ class NewPostPage(QWidget):
         self.topic_input.setPlaceholderText('Enter topic...')
         self.topic_input.setStyleSheet('font-size:16px;')
         layout.addWidget(self.topic_input)
-        lcat = QLabel('Рубрика (категория) для WordPress:')
-        lcat.setStyleSheet('font-size:16px; color:#23272e;')
-        layout.addWidget(lcat)
-        self.category_box.setStyleSheet('font-size:16px;')
-        layout.addWidget(self.category_box)
+        # lcat = QLabel('Рубрика (категория) для WordPress:')
+        # lcat.setStyleSheet('font-size:16px; color:#23272e;')
+        # layout.addWidget(lcat)
+        # self.category_box.setStyleSheet('font-size:16px;')
+        # layout.addWidget(self.category_box)
         self.generate_btn = QPushButton('Generate Article')
         self.generate_btn.setStyleSheet('margin-bottom: 8px;')
         self.generate_btn.clicked.connect(self.generate_article)
@@ -70,24 +75,12 @@ class NewPostPage(QWidget):
         layout.addWidget(self.mass_btn)
         layout.addWidget(self.watermark_checkbox)
         layout.addWidget(self.select_watermark_btn)
-        self.load_categories()
+        # self.load_categories()
 
     def load_categories(self):
-        try:
-            cats = self.wp.get_categories()
-            self.categories = cats
-            self.category_box.clear()
-            for c in cats:
-                self.category_box.addItem(f"{c['name']} ({c['slug']})", c['id'])
-        except Exception as e:
-            self.category_box.clear()
-            self.category_box.addItem('Ошибка загрузки категорий')
-
+        pass  # больше не требуется
     def get_selected_category_id(self):
-        idx = self.category_box.currentIndex()
-        if idx < 0 or not self.categories:
-            return None
-        return self.category_box.currentData()
+        return None  # больше не требуется
 
     def replace_or_distribute_images(self, html, image_urls):
         # Найти все <img ...>
@@ -170,7 +163,7 @@ Provided image URLs (use all):
         if self.image_paths:
             media_urls = []
             for img in self.image_paths:
-                _, url = self.wp.upload_media(img)
+                _, url = self.wp_clients[0].upload_media(img)
                 media_urls.append(url)
             article['body'] = self.replace_or_distribute_images(article['body'], media_urls)
         self.body_edit.setPlainText(article['body'])
@@ -184,10 +177,6 @@ Provided image URLs (use all):
     def publish_post(self):
         if not hasattr(self, 'generated'):
             QMessageBox.warning(self, 'Error', 'Generate article first!')
-            return
-        category_id = self.get_selected_category_id()
-        if not category_id:
-            QMessageBox.warning(self, 'Error', 'Выберите рубрику для публикации!')
             return
         media_ids = []
         for img in self.image_paths:
@@ -221,21 +210,33 @@ Provided image URLs (use all):
                      upload_path = img # Загружаем оригинальное изображение в случае ошибки обработки
             else:
                 upload_path = img
-            media_id, _ = self.wp.upload_media(upload_path)
+            media_id, _ = self.wp_clients[0].upload_media(upload_path)  # Для первой WP
             media_ids.append(media_id)
-        post = self.wp.create_post(
-            title=self.generated['title'],
-            content=self.generated['body'],
-            status='publish',
-            media_ids=media_ids if media_ids else None,
-            category_id=category_id
-        )
-        tg_text = self.format_telegram_post(self.generated['telegram_summary'], post['link'])
-        if self.image_paths:
-            self.tg.send_photo(self.image_paths[0], caption=tg_text, parse_mode='HTML')
-        else:
-            self.tg.send_message(tg_text, parse_mode='HTML')
-        QMessageBox.information(self, 'Success', 'Post published!')
+        # Публикация на все WP сайты с их категориями
+        post_links = []
+        for i, wp in enumerate(self.wp_clients):
+            try:
+                post = wp.create_post(
+                    title=self.generated['title'],
+                    content=self.generated['body'],
+                    status='publish',
+                    media_ids=media_ids if media_ids else None,
+                    category_id=self.wp_categories[i] if self.wp_categories[i] else None
+                )
+                post_links.append(post['link'])
+            except Exception as e:
+                post_links.append(f'Ошибка: {e}')
+        # Публикация во все TG боты
+        tg_text = self.format_telegram_post(self.generated['telegram_summary'], post_links[0] if post_links else '')
+        for tg in self.tg_clients:
+            try:
+                if self.image_paths:
+                    tg.send_photo(self.image_paths[0], caption=tg_text, parse_mode='HTML')
+                else:
+                    tg.send_message(tg_text, parse_mode='HTML')
+            except Exception as e:
+                pass
+        QMessageBox.information(self, 'Success', 'Post published to all sites and bots!')
 
     def select_images_root(self):
         dir = QFileDialog.getExistingDirectory(self, 'Select Root Images Folder')
@@ -292,7 +293,7 @@ Provided image URLs (use all):
                 for fname in sorted(os.listdir(subfolder)):
                     if fname.lower().endswith(('.png', '.jpg', '.jpeg')):
                         img_path = os.path.join(subfolder, fname)
-                        media_id, media_url = self.wp.upload_media(img_path)
+                        media_id, media_url = self.wp_clients[0].upload_media(img_path)
                         image_paths.append(img_path)
                         image_urls.append(media_url)
                         media_ids.append(media_id)
@@ -306,7 +307,7 @@ Provided image URLs (use all):
                 article = json.loads(match.group(0))
                 if image_urls:
                     article['body'] = self.replace_or_distribute_images(article['body'], image_urls)
-                post = self.wp.create_post(
+                post = self.wp_clients[0].create_post(
                     title=article['title'],
                     content=article['body'],
                     status='publish',
@@ -315,9 +316,9 @@ Provided image URLs (use all):
                 )
                 tg_text = self.format_telegram_post(article['telegram_summary'], post['link'])
                 if image_paths:
-                    self.tg.send_photo(image_paths[0], caption=tg_text, parse_mode='HTML')
+                    self.tg_clients[0].send_photo(image_paths[0], caption=tg_text, parse_mode='HTML')
                 else:
-                    self.tg.send_message(tg_text, parse_mode='HTML')
+                    self.tg_clients[0].send_message(tg_text, parse_mode='HTML')
                 items.pop(i)
                 with open(file, 'w', encoding='utf-8') as f:
                     json.dump(items, f, ensure_ascii=False, indent=2)
