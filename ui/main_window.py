@@ -17,11 +17,11 @@ class MainWindow(QMainWindow):
         # Боковое меню
         self.menu = QListWidget()
         self.menu.addItems(['Dashboard', 'New Post', 'History', 'Settings'])
-        self.menu.setFixedWidth(180)
+        self.menu.setFixedWidth(200)
         self.menu.currentRowChanged.connect(self.switch_page)
         self.layout.addWidget(self.menu)
 
-        # Страницы
+        # Основная панель
         self.pages = QStackedWidget()
         self.dashboard = DashboardPage()
         self.new_post = NewPostPage()
@@ -31,9 +31,61 @@ class MainWindow(QMainWindow):
         self.pages.addWidget(self.new_post)
         self.pages.addWidget(self.history)
         self.pages.addWidget(self.settings)
+        self.pages.setStyleSheet('''
+            QStackedWidget {
+                background: #f4f6fa;
+                border-radius: 12px;
+            }
+        ''')
         self.layout.addWidget(self.pages)
+
+        # Глобальный стиль
+        self.setStyleSheet('''
+            /* Удалён QMainWindow { background: #181c22; } чтобы использовать системный светлый фон */
+            QLabel {
+                font-size: 20px;
+                color: #23272e;
+            }
+            QPushButton {
+                background: #00c3ff;
+                color: #fff;
+                border-radius: 8px;
+                padding: 8px 20px;
+                font-size: 16px;
+            }
+            QPushButton:hover {
+                background: #0099cc;
+            }
+            QLineEdit, QTextEdit, QComboBox, QSpinBox {
+                background: #fff;
+                border: 1px solid #cfd8dc;
+                border-radius: 6px;
+                padding: 6px;
+                font-size: 16px;
+            }
+            QListWidget {
+                background: #fff;
+                color: #23272e;
+                border: none;
+                font-size: 18px;
+                border-radius: 10px;
+                padding: 8px 0 8px 0;
+            }
+            QListWidget::item {
+                background: transparent;
+                border: none;
+                padding: 8px 16px;
+                margin: 2px 0;
+                border-radius: 6px;
+            }
+            QListWidget::item:selected {
+                background: #00c3ff;
+                color: #fff;
+                border-left: 4px solid #0099cc;
+            }
+        ''')
 
         self.menu.setCurrentRow(0)
 
     def switch_page(self, index):
-        self.pages.setCurrentIndex(index) 
+        self.pages.setCurrentIndex(index)
