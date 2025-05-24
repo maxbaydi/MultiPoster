@@ -1,0 +1,193 @@
+[
+    {
+    "brand": "Schneider Electric",
+    "topic": "Schneider Electric: Integrated solutions for automation and energy efficiency",
+    "subtopics": [
+    "M258 and TM258 Controllers: High Performance in Industrial Systems",
+    "Human-Machine Interfaces (HMI) HMIGTO: Process Visualization",
+    "TM5 and TM3 I/O Modules: Expanding Automation Capabilities",
+    "Energy-saving motors and frequency converters Altivar"
+    ]
+    },
+    {
+    "brand": "Siemens",
+   "topic": "Siemens: Technologies for industrial automation and digital ecosystems",
+    "subtopics": [
+    "SIMATIC S7-1500 Controllers: Integration into Industry 4.0",
+    "SINAMICS drives and SIMOTICS servomotors: precision in motion",
+    "WinCC and TIA Portal software: unification of control",
+    "Sensors and intrinsically safe components for harsh environments"
+    ]
+    },
+    {
+    "brand": "Allen-Bradley",
+    "topic": "Allen Bradley: Reliable Solutions for Automation and Control",
+    "subtopics": [
+    "CompactLogix and ControlLogix Controllers: Flexibility in Control",
+   "PowerFlex Frequency Converters: Optimizing Energy Consumption",
+    "POINT I/O modules: minimizing space and maximizing functionality",
+    "GuardLogix and Safety Relay Safety Systems"
+    ]
+    },
+    {
+    "brand": "ABB",
+    "topic": "ABB: Frequency converters and robotics for industry",
+    "subtopics": [
+    "ACS880 frequency converters: energy efficiency and flexibility",
+    "IRB Series Robots and Servo Motors: Precision in Automation",
+    "Integration into control systems via standard interfaces",
+   "Renewable Energy Solutions"
+    ]
+    },
+    {
+    "brand": "OMRON",
+    "topic": "OMRON: Sensors and controllers for high-precision automation",
+    "subtopics": [
+    "R88M Series Servomotors: Precision in Machine Tools and Robots",
+    "Inductive and optical sensors: control of technological processes",
+    "NJ/NX Controllers: Integration into Industry 4.0",
+    "Security modules for equipment protection"
+    ]
+    },
+    {
+    "brand": "SICK",
+    "topic": "SICK: Lidars, sensors and safety systems for industry",
+    "subtopics": [
+   "2D-lidars LMS111: navigation and control of safety zones",
+    "Contrast and color sensors: product quality control",
+    "Ultrasonic sensors: level and distance measurement",
+    "Integration into Industry 4.0 systems via digital interfaces"
+    ]
+    },
+    {
+    "brand": "Pepperl+Fuchs",
+    "topic": "Pepperl+Fuchs: Innovative sensors and intrinsically safe solutions",
+    "subtopics": [
+    "Inductive and Ultrasonic Sensors: Accuracy in Detection",
+    "Intrinsically safe barriers KFD2: protection in hazardous areas",
+   "Optical sensors and laser scanners for quality control",
+    "Interface modules for integration into control systems"
+    ]
+    },
+    {
+    "brand": "IFM",
+    "topic": "IFM Electronic: Sensors and Sensors for Industrial Automation",
+    "subtopics": [
+    "Temperature and pressure sensors: accuracy in extreme conditions",
+    "IO-Link technologies for digital integration of sensors",
+    "Compact evaluation units for speed and vibration monitoring",
+    "Inductive and optical sensors: monitoring the position of objects"
+    ]
+    },
+    {
+   "brand": "B&R Automation",
+    "topic": "B&R: Modular solutions for industrial automation",
+    "subtopics": [
+    "X20 modules: flexibility in control system assembly",
+    "CP1585 Processors and Controllers: High Performance",
+    "Interface boards and CANopen buses: hardware integration",
+    "Energy-saving power modules and backup sources"
+    ]
+    },
+    {
+    "brand": "Festo",
+    "topic": "Festo: Pneumatics and automation for industrial solutions",
+    "subtopics": [
+    "DSBF and DFM Pneumatic Cylinders: Reliability in Difficult Conditions",
+   "Linear actuators DGC and EGC: positioning accuracy",
+    "Vacuum systems and grippers for assembly automation",
+    "Pressure regulators and distributors for pneumatic systems"
+    ]
+    },
+    {
+    "brand": "MTL",
+    "topic": "MTL: Intrinsically Safe Solutions for Oil, Gas and Chemical Industries",
+    "subtopics": [
+    "MTL4500 Series Ignition Barriers: Safety in Hazardous Areas",
+    "Temperature and pressure converters for automated process control systems",
+    "Input/output modules for integration into control systems",
+   "Real-time vibration and level monitoring solutions"
+    ]
+    },
+    {
+    "brand": "Honeywell",
+    "topic": "Honeywell: Industrial Security and Automation Systems",
+    "subtopics": [
+    "Controllers and safety modules for equipment protection",
+    "Pressure and Temperature Sensors: Accuracy in Extreme Conditions",
+    "Process control systems for the oil and gas industry",
+    "Integration into SCADA systems and Industry 4.0"
+    ]
+    },
+    {
+    "brand": "Yokogawa",
+   "topic": "Yokogawa: Instrumentation and control systems for industry",
+    "subtopics": [
+    "AXFA11G Magnetic Flowmeters: Accuracy in Measurements",
+    "YS1500/YS1700 Controllers: Flexibility in Process Control",
+    "CA550 Calibrators: Accuracy in Equipment Testing",
+    "CENTUM and FAST/TOOLS control systems for Industry 4.0"
+    ]
+    },
+    {
+    "brand": "Mitsubishi",
+    "topic": "Mitsubishi: Frequency converters and programmable controllers",
+    "subtopics": [
+    "Frequency converters FR-D7/Fr-A8: energy efficiency",
+   "FX5U/FX2N programmable controllers: flexibility in control",
+    "HG-SR servo motors: precision in machine tools and robots",
+    "Integration into control systems via standard interfaces"
+    ]
+    },
+    {
+    "brand": "Bently Nevada",
+    "topic": "Bently Nevada: Vibration Monitoring and Equipment Diagnostics",
+    "subtopics": [
+    "Proximal sensors and cables for vibration measurement",
+    "Modules 3500/65: Equipment Status Diagnostics",
+    "3500/22M Monitoring Systems: Real-Time Data Analysis",
+   "Solutions for the oil and gas and energy industry"
+    ]
+    },
+    {
+    "brand": "Endress+Hauser",
+    "topic": "Endress+Hauser: Measuring instruments for industry",
+    "subtopics": [
+    "FMR5x Radar Level Gauges: Accuracy in Challenging Conditions",
+    "Proline Flowmeters: Measuring Liquid and Gas Flows",
+    "pH and conductivity analyzers: quality control of the environment",
+    "Integration into control systems via standard protocols"
+    ]
+    },
+    {
+    "brand": "Bosch Rexroth",
+    "topic": "Bosch Rexroth: Hydraulics and automation for industry",
+    "subtopics": [
+   "Hydraulic Cylinders and Pumps: Reliability in Tough Conditions",
+    "IndraDrive servo motors and controllers: precision in motion",
+    "Control systems for machine tools and production lines",
+    "Solutions for mobile equipment and construction industry"
+    ]
+    },
+    {
+    "brand": "Phoenix Contact",
+    "topic": "Phoenix Contact: Electrical components and security systems",
+    "subtopics": [
+    "Terminals and connectors: reliability in electrical installation",
+    "Power Systems and Converters: Voltage Stability",
+   "Network components: switching in industrial networks",
+    "Solutions for intrinsically safe systems and Industry 4.0"
+    ]
+    },
+    {
+    "brand": "MOXA",
+    "topic": "MOXA: Industrial Communication Solutions and IoT",
+    "subtopics": [
+    "EDS/EDS-408A Industrial Switches: Reliability in Networks",
+    "NPort Port Servers: Serial Device Integration",
+    "UC-8410 Embedded Computers: Processing Data at the Edge of the Network",
+    "IIoT and Industry 4.0 Solutions via Ethernet/IP and Modbus"
+    ]
+    }
+   ]
+   

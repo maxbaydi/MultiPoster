@@ -1,0 +1,43 @@
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
+from config.env_manager import EnvManager
+
+class SettingsPage(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.env = EnvManager()
+        layout = QVBoxLayout(self)
+        layout.addWidget(QLabel('<h2>Settings</h2>'))
+        self.wp_url = QLineEdit(self.env.get('WP_URL', ''))
+        self.wp_user = QLineEdit(self.env.get('WP_USERNAME', ''))
+        self.wp_pass = QLineEdit(self.env.get('WP_APP_PASSWORD', ''))
+        self.tg_token = QLineEdit(self.env.get('TELEGRAM_BOT_TOKEN', ''))
+        self.tg_channel = QLineEdit(self.env.get('TELEGRAM_CHANNEL_ID', ''))
+        self.gpt_key = QLineEdit(self.env.get('VSEGPT_API_KEY', ''))
+        self.gpt_url = QLineEdit(self.env.get('VSEGPT_URL', ''))
+        layout.addWidget(QLabel('WordPress URL:'))
+        layout.addWidget(self.wp_url)
+        layout.addWidget(QLabel('WordPress Username:'))
+        layout.addWidget(self.wp_user)
+        layout.addWidget(QLabel('WordPress App Password:'))
+        layout.addWidget(self.wp_pass)
+        layout.addWidget(QLabel('Telegram Bot Token:'))
+        layout.addWidget(self.tg_token)
+        layout.addWidget(QLabel('Telegram Channel ID:'))
+        layout.addWidget(self.tg_channel)
+        layout.addWidget(QLabel('VseGPT API Key:'))
+        layout.addWidget(self.gpt_key)
+        layout.addWidget(QLabel('VseGPT URL:'))
+        layout.addWidget(self.gpt_url)
+        self.save_btn = QPushButton('Save Settings')
+        self.save_btn.clicked.connect(self.save)
+        layout.addWidget(self.save_btn)
+
+    def save(self):
+        self.env.set('WP_URL', self.wp_url.text())
+        self.env.set('WP_USERNAME', self.wp_user.text())
+        self.env.set('WP_APP_PASSWORD', self.wp_pass.text())
+        self.env.set('TELEGRAM_BOT_TOKEN', self.tg_token.text())
+        self.env.set('TELEGRAM_CHANNEL_ID', self.tg_channel.text())
+        self.env.set('VSEGPT_API_KEY', self.gpt_key.text())
+        self.env.set('VSEGPT_URL', self.gpt_url.text())
+        QMessageBox.information(self, 'Settings', 'Settings saved!') 
