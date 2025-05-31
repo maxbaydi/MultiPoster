@@ -4,6 +4,7 @@ from ui.pages.dashboard import DashboardPage
 from ui.pages.new_post import NewPostPage
 from ui.pages.history import HistoryPage
 from ui.pages.settings import SettingsPage
+from ui.pages.telegram_settings import TelegramSettingsPage
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -12,11 +13,9 @@ class MainWindow(QMainWindow):
         self.setGeometry(100, 100, 1200, 800)
         self.central = QWidget()
         self.setCentralWidget(self.central)
-        self.layout = QHBoxLayout(self.central)
-
-        # Боковое меню
+        self.layout = QHBoxLayout(self.central)        # Боковое меню
         self.menu = QListWidget()
-        self.menu.addItems(['Dashboard', 'New Post', 'History', 'Settings'])
+        self.menu.addItems(['Dashboard', 'New Post', 'History', 'Settings', 'Telegram Settings'])
         self.menu.setFixedWidth(200)
         self.menu.currentRowChanged.connect(self.switch_page)
         self.layout.addWidget(self.menu)
@@ -27,10 +26,12 @@ class MainWindow(QMainWindow):
         self.new_post = NewPostPage()
         self.history = HistoryPage()
         self.settings = SettingsPage()
+        self.telegram_settings = TelegramSettingsPage()
         self.pages.addWidget(self.dashboard)
         self.pages.addWidget(self.new_post)
         self.pages.addWidget(self.history)
         self.pages.addWidget(self.settings)
+        self.pages.addWidget(self.telegram_settings)
         self.pages.setStyleSheet('''
             QStackedWidget {
                 background: #f4f6fa;

@@ -11,7 +11,7 @@
     },
     {
     "brand": "Siemens",
-   "topic": "Siemens: Technologies for industrial automation and digital ecosystems",
+    "topic": "Siemens: Technologies for industrial automation and digital ecosystems",
     "subtopics": [
     "SIMATIC S7-1500 Controllers: Integration into Industry 4.0",
     "SINAMICS drives and SIMOTICS servomotors: precision in motion",
@@ -24,7 +24,7 @@
     "topic": "Allen Bradley: Reliable Solutions for Automation and Control",
     "subtopics": [
     "CompactLogix and ControlLogix Controllers: Flexibility in Control",
-   "PowerFlex Frequency Converters: Optimizing Energy Consumption",
+    "PowerFlex Frequency Converters: Optimizing Energy Consumption",
     "POINT I/O modules: minimizing space and maximizing functionality",
     "GuardLogix and Safety Relay Safety Systems"
     ]
@@ -36,7 +36,7 @@
     "ACS880 frequency converters: energy efficiency and flexibility",
     "IRB Series Robots and Servo Motors: Precision in Automation",
     "Integration into control systems via standard interfaces",
-   "Renewable Energy Solutions"
+    "Renewable Energy Solutions"
     ]
     },
     {
@@ -53,7 +53,7 @@
     "brand": "SICK",
     "topic": "SICK: Lidars, sensors and safety systems for industry",
     "subtopics": [
-   "2D-lidars LMS111: navigation and control of safety zones",
+    "2D-lidars LMS111: navigation and control of safety zones",
     "Contrast and color sensors: product quality control",
     "Ultrasonic sensors: level and distance measurement",
     "Integration into Industry 4.0 systems via digital interfaces"
@@ -65,7 +65,7 @@
     "subtopics": [
     "Inductive and Ultrasonic Sensors: Accuracy in Detection",
     "Intrinsically safe barriers KFD2: protection in hazardous areas",
-   "Optical sensors and laser scanners for quality control",
+    "Optical sensors and laser scanners for quality control",
     "Interface modules for integration into control systems"
     ]
     },
@@ -80,7 +80,7 @@
     ]
     },
     {
-   "brand": "B&R Automation",
+    "brand": "B&R Automation",
     "topic": "B&R: Modular solutions for industrial automation",
     "subtopics": [
     "X20 modules: flexibility in control system assembly",
@@ -94,7 +94,7 @@
     "topic": "Festo: Pneumatics and automation for industrial solutions",
     "subtopics": [
     "DSBF and DFM Pneumatic Cylinders: Reliability in Difficult Conditions",
-   "Linear actuators DGC and EGC: positioning accuracy",
+    "Linear actuators DGC and EGC: positioning accuracy",
     "Vacuum systems and grippers for assembly automation",
     "Pressure regulators and distributors for pneumatic systems"
     ]
@@ -106,7 +106,7 @@
     "MTL4500 Series Ignition Barriers: Safety in Hazardous Areas",
     "Temperature and pressure converters for automated process control systems",
     "Input/output modules for integration into control systems",
-   "Real-time vibration and level monitoring solutions"
+	"Real-time vibration and level monitoring solutions"
     ]
     },
     {
@@ -121,7 +121,7 @@
     },
     {
     "brand": "Yokogawa",
-   "topic": "Yokogawa: Instrumentation and control systems for industry",
+    "topic": "Yokogawa: Instrumentation and control systems for industry",
     "subtopics": [
     "AXFA11G Magnetic Flowmeters: Accuracy in Measurements",
     "YS1500/YS1700 Controllers: Flexibility in Process Control",
@@ -134,7 +134,7 @@
     "topic": "Mitsubishi: Frequency converters and programmable controllers",
     "subtopics": [
     "Frequency converters FR-D7/Fr-A8: energy efficiency",
-   "FX5U/FX2N programmable controllers: flexibility in control",
+    "FX5U/FX2N programmable controllers: flexibility in control",
     "HG-SR servo motors: precision in machine tools and robots",
     "Integration into control systems via standard interfaces"
     ]
@@ -146,7 +146,7 @@
     "Proximal sensors and cables for vibration measurement",
     "Modules 3500/65: Equipment Status Diagnostics",
     "3500/22M Monitoring Systems: Real-Time Data Analysis",
-   "Solutions for the oil and gas and energy industry"
+    "Solutions for the oil and gas and energy industry"
     ]
     },
     {
@@ -163,7 +163,7 @@
     "brand": "Bosch Rexroth",
     "topic": "Bosch Rexroth: Hydraulics and automation for industry",
     "subtopics": [
-   "Hydraulic Cylinders and Pumps: Reliability in Tough Conditions",
+    "Hydraulic Cylinders and Pumps: Reliability in Tough Conditions",
     "IndraDrive servo motors and controllers: precision in motion",
     "Control systems for machine tools and production lines",
     "Solutions for mobile equipment and construction industry"
@@ -175,7 +175,7 @@
     "subtopics": [
     "Terminals and connectors: reliability in electrical installation",
     "Power Systems and Converters: Voltage Stability",
-   "Network components: switching in industrial networks",
+    "Network components: switching in industrial networks",
     "Solutions for intrinsically safe systems and Industry 4.0"
     ]
     },

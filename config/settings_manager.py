@@ -7,7 +7,17 @@ class SettingsManager:
         self.data = {
             "telegram_bots": [],
             "wordpress_sites": [],
-            "vsegpt": {"api_key": "", "url": ""}
+            "vsegpt": {"api_key": "", "url": ""},
+            "telegram_settings": {
+                "enable_publish": True,
+                "message_format": "Текст + изображение",
+                "max_length": 400,
+                "prefix": "🔎 Quality. Warranty. Confidence.",
+                "suffix": "👉 See more at Global Vendor Network",
+                "default_url": "https://gvn.biz/",
+                "compress_images": True,
+                "compression_quality": 85
+            }
         }
         self.load()
 
@@ -42,4 +52,20 @@ class SettingsManager:
 
     def set_vsegpt(self, vsegpt):
         self.data['vsegpt'] = vsegpt
+        self.save()
+
+    def get_telegram_settings(self):
+        return self.data.get('telegram_settings', {
+            "enable_publish": True,
+            "message_format": "Текст + изображение",
+            "max_length": 400,
+            "prefix": "🔎 Quality. Warranty. Confidence.",
+            "suffix": "👉 See more at Global Vendor Network",
+            "default_url": "https://gvn.biz/",
+            "compress_images": True,
+            "compression_quality": 85
+        })
+
+    def set_telegram_settings(self, settings):
+        self.data['telegram_settings'] = settings
         self.save()

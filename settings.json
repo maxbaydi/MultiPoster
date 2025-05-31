@@ -1,26 +1,25 @@
 {
-  "telegram_bots": [
-    {
-      "token": "8199582203:AAE7u3BnzDQLdjI1L-F0WNby1sKWJw50zw8",
-      "channel_id": "-1001209150464"
-    }
-  ],
+  "telegram_bots": [],
   "wordpress_sites": [
     {
       "url": "www.gvn.biz",
       "username": "70@bam.kz",
       "app_password": "VmwI WxQl rqKn jAJR vs3v pxXC",
       "category_id": 50
-    },
-    {
-      "url": "www.itexport.ru",
-      "username": "70@bam.kz",
-      "app_password": "9Vfd 66eM erXE hg7M 66ez j4kE",
-      "category_id": 1
     }
   ],
   "vsegpt": {
     "api_key": "sk-or-vv-1bbc7d1dabb7f779acdb9c240fe7c4ae0f5191a74a466383d7c0dfaccb781f17",
     "url": "https://api.vsegpt.ru/v1"
+  },
+  "telegram_settings": {
+    "enable_publish": false,
+    "message_format": "Текст + изображение",
+    "max_length": 400,
+    "prefix": "🔎 Quality. Warranty. Confidence.",
+    "suffix": "👉 See more at Global Vendor Network",
+    "default_url": "https://gvn.biz/",
+    "compress_images": true,
+    "compression_quality": 85
   }
 }
